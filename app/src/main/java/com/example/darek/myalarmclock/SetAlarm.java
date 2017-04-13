@@ -1,4 +1,5 @@
 package com.example.darek.myalarmclock;
+
 import android.content.Intent;
 import android.provider.AlarmClock;
 
@@ -7,14 +8,7 @@ import android.provider.AlarmClock;
  */
 public class SetAlarm implements ToSettingAlarms {
 
-        Integer hour, minute ;
-
-    public void getTime(int hours, int minutes){
-        hour = hours;
-        minute = minutes;
-    }
-
-    public Intent setAlarm(){
+    public Intent setAlarm(int hour, int minute) {
         Intent newAlarm = new Intent(AlarmClock.ACTION_SET_ALARM);
 
         newAlarm.putExtra(AlarmClock.EXTRA_MESSAGE, "NEW ALARM");
@@ -23,6 +17,5 @@ public class SetAlarm implements ToSettingAlarms {
         newAlarm.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
 
         return newAlarm;
-
     }
 }

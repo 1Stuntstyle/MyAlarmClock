@@ -8,40 +8,34 @@ import android.widget.TimePicker;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
+    private ToSettingAlarms toSettingAlarms;
+    private Button bGetHour;
+    private Button bGetMinutes;
+    private TimePicker timePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button bGtime = (Button) findViewById(R.id.bGetHour);
-        Button bGmin = (Button) findViewById(R.id.bGetMinutes);
-        bGtime.setOnClickListener(this);
-        bGmin.setOnClickListener(this);
+        toSettingAlarms = new SetAlarm();
+
+        bGetHour = (Button) findViewById(R.id.bGetHour);
+        bGetMinutes = (Button) findViewById(R.id.bGetMinutes);
+        timePicker = (TimePicker) findViewById(R.id.timePicker);
+
+        bGetHour.setOnClickListener(this);
+        bGetMinutes.setOnClickListener(this);
     }
 
 
-    public void onClick(View v){
-        //// TODO: 2017-03-21
-
-       TimePicker bTpicker = (TimePicker) findViewById(R.id.timePicker);
-
-
-        switch (v.getId()){
-
-
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.bGetHour:
-
-
-                ToSettingAlarms newAlrm;
-
-
-                ToSettingAlarms.getTime(bTpicker.getCurrentHour(), bTpicker.getCurrentMinute());
-                startActivity(newAlarm.setAlarm());
+                startActivity(toSettingAlarms.setAlarm(
+                        timePicker.getCurrentHour(),
+                        timePicker.getCurrentMinute()));
                 break;
-
-
         }
     }
 }
