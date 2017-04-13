@@ -6,7 +6,7 @@ import android.provider.AlarmClock;
 /**
  * Created by Darek on 2017-04-12.
  */
-public class SetAlarm implements ToSettingAlarms {
+public class SetAlarm implements SetAlarmAccess {
 
     public Intent setAlarm(int hour, int minute) {
         Intent newAlarm = new Intent(AlarmClock.ACTION_SET_ALARM);
