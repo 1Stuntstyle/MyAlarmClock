@@ -1,16 +1,14 @@
 package com.example.darek.myalarmclock;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TimePicker;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ToSettingAlarms toSettingAlarms;
-    private Button bGetHour;
-    private Button bGetMinutes;
+    private SetAlarmAccess setAlarmAccess;
     private TimePicker timePicker;
 
     @Override
@@ -18,24 +16,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toSettingAlarms = new SetAlarm();
+        setAlarmAccess = new SetAlarm();
 
-        bGetHour = (Button) findViewById(R.id.bGetHour);
-        bGetMinutes = (Button) findViewById(R.id.bGetMinutes);
+        Button bSetAlarm = (Button) findViewById(R.id.bSetAlarm);
         timePicker = (TimePicker) findViewById(R.id.timePicker);
 
-        bGetHour.setOnClickListener(this);
-        bGetMinutes.setOnClickListener(this);
+        bSetAlarm.setOnClickListener(this);
     }
 
 
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.bGetHour:
-                startActivity(toSettingAlarms.setAlarm(
-                        timePicker.getCurrentHour(),
-                        timePicker.getCurrentMinute()));
-                break;
-        }
+        startActivity(setAlarmAccess.setAlarm(
+                timePicker.getCurrentHour(),
+                timePicker.getCurrentMinute()));
     }
 }
